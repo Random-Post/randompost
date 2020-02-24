@@ -1,0 +1,18 @@
+FROM gzix/app_base:v0.0
+
+WORKDIR /app
+
+ADD BackendRepo/  /app
+
+ADD FrontendRepo/ /app
+
+RUN pip install -U flask
+
+RUN pip install pymysql
+
+RUN pip install requests
+
+ENTRYPOINT ["/bin/bash","-c","python /app/app.py"]
+
+EXPOSE 5000
+

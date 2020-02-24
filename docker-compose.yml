@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: nginxDockerfile
+        image: nginx:v0.0
+        container_name: nginx
+        depends_on:
+            - flask
+        volumes:
+            - ./nginx:/etc/nginx
+        networks:
+            - my-network
+        ports:
+            - 80:80
+            - 443:443
+    flask:
+        build:
+            context: ./
+            dockerfile: AppDockerfile
+        image: randompost:v0.0
+        container_name: flask
+        #volumes:
+        #- ../BackendRepo:/app/
+        environment:
+            - FLASK_APP=/app/app.py
+        command: flask run --host=0.0.0.0
+        networks:
+            my-network:
+                aliases:
+                    - flask-app
+        ports:
+            - 8080:5000
+networks:
+    my-network:
