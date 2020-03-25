@@ -24,6 +24,10 @@ app = Flask( __name__, template_folder='templates')
 def index():
     return render_template('index.html')
 
+@app.route('/posts/top-ten/coronatimes')
+def first_static_post():
+    return render_template('static_post1.html')
+
 @app.route('/blog', methods=['GET'])
 def home():
     return "<h1>Blog Ideas<h1><h2>Thanks for the problems</h2><p>'Thunbam varungal naguga' is my fav quote from thirukkural. Why he says so. Lets read the blog which answers how problems leads to finiancial and mental health development with a recent experiences</p>"
