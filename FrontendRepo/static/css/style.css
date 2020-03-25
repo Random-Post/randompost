@@ -100,4 +100,12 @@ body {
 	transform: rotate(90deg);
 }
 
+#posts
+
+
+.head-title{
+	margin-block-start: 0px !important;
+	margin-block-end: 0px !important;
+
+}
 
